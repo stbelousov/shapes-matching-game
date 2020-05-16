@@ -1,4 +1,4 @@
-QT += core gui phonon
+QT += core gui widgets multimedia
 
 TARGET = shapes_matching_game
 TEMPLATE = app
@@ -14,3 +14,5 @@ HEADERS += widget.h \
 
 FORMS   += widget.ui \
            viewer.ui
+
+RESOURCES += resources.qrc

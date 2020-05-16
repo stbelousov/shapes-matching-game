@@ -1,0 +1,11 @@
+<RCC>
+    <qresource>
+        <file>img/fail.png</file>
+        <file>img/left_key.png</file>
+        <file>img/ok.png</file>
+        <file>img/right_key.png</file>
+        <file>img/wallpaper.jpg</file>
+        <file>sound/fail.wav</file>
+        <file>sound/ok.wav</file>
+    </qresource>
+</RCC>

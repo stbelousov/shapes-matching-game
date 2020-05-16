@@ -4,13 +4,11 @@
 #include <QWidget>
 #include <QVector>
 #include <QPainter>
+#include <QSoundEffect>
 #include <QTimer>
 #include <map>
 #include <boost/random/mersenne_twister.hpp>
 #include <boost/random/uniform_int.hpp>
-#include <phonon/AudioOutput>
-#include <phonon/MediaObject>
-#include <phonon/MediaSource>
 
 #include "shape.h"
 #include "widget.h"
@@ -58,8 +56,7 @@ private:
     boost::mt19937 rnd;
     FrameType curFrame, curMenuPos;
     QVector < QString > buttons;
-    Phonon::MediaObject okSound, failSound;
-    Phonon::AudioOutput audio, audio2;
+    QSoundEffect okSound, failSound;
 };
 
 #endif // VIEWER_H

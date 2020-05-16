@@ -17,11 +17,11 @@ Viewer::Viewer(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Viewer),
     timer(this),
-    rnd(time(NULL)) {
+    rnd(time(nullptr)) {
     ui->setupUi(this);
 
     QPalette pal = this->palette();
-    pal.setBrush(QPalette::Background, QBrush(QPixmap("../img/wallpaper.jpg")));
+    pal.setBrush(QPalette::Background, QBrush(QPixmap(":/img/wallpaper.jpg")));
     this->setPalette(pal);
     this->setAutoFillBackground(true);
 
@@ -30,15 +30,13 @@ Viewer::Viewer(QWidget *parent) :
     connect(&timer, SIGNAL(timeout()), this, SLOT(update()));
     timerInterval = 1000;
 
-    assert(leftKey.load("../img/left_key.png"));
-    assert(rightKey.load("../img/right_key.png"));
-    assert(okIcon.load("../img/ok.png"));
-    assert(failIcon.load("../img/fail.png"));
+    assert(leftKey.load(":/img/left_key.png"));
+    assert(rightKey.load(":/img/right_key.png"));
+    assert(okIcon.load(":/img/ok.png"));
+    assert(failIcon.load(":/img/fail.png"));
 
-    okSound.setCurrentSource(Phonon::MediaSource("../sound/ok.wav"));
-    failSound.setCurrentSource(Phonon::MediaSource("../sound/fail.wav"));
-    Phonon::createPath(&okSound, &audio);
-    Phonon::createPath(&failSound, &audio2);
+    okSound.setSource(QUrl("qrc:/sound/ok.wav"));
+    failSound.setSource(QUrl("qrc:/sound/fail.wav"));
 
     totalRounds = 50;
     ready = false;
@@ -50,7 +48,7 @@ Viewer::Viewer(QWidget *parent) :
     buttons.push_back("Resume game");
     buttons.push_back("Scoreboard");
     buttons.push_back("Help");
-    buttons.push_back("Exit");
+    buttons.push_back("Quit");
 
     curFrame = MENU;
     curMenuPos = PLAY;
