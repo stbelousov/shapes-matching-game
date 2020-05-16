@@ -267,7 +267,7 @@ void Viewer::drawHelp() {
     const int helpTextBoxHeight = 700;
     p.drawText(this->width() / 2 - helpTextBoxWidth / 2, 170 - helpTextBoxHeight / 2,
                helpTextBoxWidth, helpTextBoxHeight, Qt::AlignCenter | Qt::TextWordWrap,
-               "This game consists of " + QString::number(totalRounds) + " rounds. "
+               "The game consists of " + QString::number(totalRounds) + " rounds. "
                + "Each round lasts one second. In each round, you have to answer whether the shown image corresponds "
                + "to the provided description or not. All images are coloured geometric shapes. All variants of shapes and colours used in this "
                + "game are shown below. Each correct answer gives you +1 to your score, an incorrect one gives -1 and if you skip the question, "
