@@ -16,9 +16,10 @@
 Viewer::Viewer(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Viewer),
-    timer(this),
-    rnd(time(nullptr)) {
+    timer(this) {
     ui->setupUi(this);
+
+    srand(time(NULL));
 
     QPalette pal = this->palette();
     pal.setBrush(QPalette::Background, QBrush(QPixmap(":/img/wallpaper.jpg")));
@@ -35,8 +36,8 @@ Viewer::Viewer(QWidget *parent) :
     assert(okIcon.load(":/img/ok.png"));
     assert(failIcon.load(":/img/fail.png"));
 
-    okSound.setSource(QUrl("qrc:/sound/ok.wav"));
-    failSound.setSource(QUrl("qrc:/sound/fail.wav"));
+    //okSound.setSource(QUrl("qrc:/sound/ok.wav"));
+    //failSound.setSource(QUrl("qrc:/sound/fail.wav"));
 
     totalRounds = 50;
     ready = false;
@@ -160,23 +161,23 @@ void Viewer::drawPlay() {
     if(!clicked) {
         int prevShape = curShape;
         while(curShape == prevShape) {
-            curShape = boost::uniform_int<>(0, shapes.size() - 1)(rnd);
+            curShape = rand() % shapes.size();
         }
     }
     shapes[curShape].draw(p);
 
     // Print text
     if(!clicked) {
-        double dice = 1.0 * boost::uniform_int<>(0, 1000000)(rnd) / 1000000;
+        double dice = 1.0 * (rand() % 1000000) / 1000000;
         if(dice < probGood) {
             text = shapes[curShape].getColorName() + " " + shapes[curShape].getShapeName();
         } else if(dice < probGood + probSameShape) {
-            text = shapes[boost::uniform_int<>(0, shapes.size() - 1)(rnd)].getColorName() + " " + shapes[curShape].getShapeName();
+            text = shapes[rand() % shapes.size()].getColorName() + " " + shapes[curShape].getShapeName();
         } else if(dice < probGood + probSameShape + probSameColor) {
-            text = shapes[curShape].getColorName() + " " + shapes[boost::uniform_int<>(0, shapes.size() - 1)(rnd)].getShapeName();
+            text = shapes[curShape].getColorName() + " " + shapes[rand() % shapes.size()].getShapeName();
         } else {
-            text = shapes[boost::uniform_int<>(0, shapes.size() - 1)(rnd)].getColorName()
-                   + " " + shapes[boost::uniform_int<>(0, shapes.size() - 1)(rnd)].getShapeName();
+            text = shapes[rand() % shapes.size()].getColorName()
+                   + " " + shapes[rand() % shapes.size()].getShapeName();
         }
     }
     QFont font;
@@ -209,12 +210,12 @@ void Viewer::drawPlay() {
             rect = okIcon.rect();
             rect.moveCenter(QPoint(this->width() / 2, this->height() - 45));
             p.drawImage(rect.topLeft(), okIcon);
-            okSound.play();
+            //okSound.play();
         } else {
             rect = failIcon.rect();
             rect.moveCenter(QPoint(this->width() / 2, this->height() - 45));
             p.drawImage(rect.topLeft(), failIcon);
-            failSound.play();
+            //failSound.play();
         }
         okShown = true;
         timer.start(timerInterval);

@@ -4,11 +4,9 @@
 #include <QWidget>
 #include <QVector>
 #include <QPainter>
-#include <QSoundEffect>
+//#include <QSoundEffect>
 #include <QTimer>
 #include <map>
-#include <boost/random/mersenne_twister.hpp>
-#include <boost/random/uniform_int.hpp>
 
 #include "shape.h"
 #include "widget.h"
@@ -53,10 +51,9 @@ private:
     bool ready, shapeTextEquals, clicked, correct, okShown, firstPlay;
     double probGood, probSameShape, probSameColor, probBad;
     QImage leftKey, rightKey, okIcon, failIcon;
-    boost::mt19937 rnd;
     FrameType curFrame, curMenuPos;
     QVector < QString > buttons;
-    QSoundEffect okSound, failSound;
+    //QSoundEffect okSound, failSound;
 };
 
 #endif // VIEWER_H
