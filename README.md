@@ -1,3 +1,13 @@
+![example1](https://github.com/stbelousov/shapes-matching-game/assets/3650015/1e2d9e80-01b4-4341-a716-70ea2dbca8af)
+
+![example2](https://github.com/stbelousov/shapes-matching-game/assets/3650015/81f082a8-4d05-4f1f-86a3-d6c88a09a8e3)
+
+![example3](https://github.com/stbelousov/shapes-matching-game/assets/3650015/7fc92c83-5c4d-4872-973a-fa19fecb88eb)
+
+![example4](https://github.com/stbelousov/shapes-matching-game/assets/3650015/b152107d-dc74-4b12-bc71-88dc5c170c3f)
+
+![example5](https://github.com/stbelousov/shapes-matching-game/assets/3650015/46c2be00-c0f3-4a5e-870d-187b43e04f14)
+
 # Description
 A desktop game with GUI.
 
